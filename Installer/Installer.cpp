@@ -5,7 +5,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "Installer.h"
-#include "InstallerDlg.h"
+#include "CWelcomePage.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -71,7 +71,7 @@ BOOL CInstallerApp::InitInstance()
 	// например на название организации
 	SetRegistryKey(_T("Локальные приложения, созданные с помощью мастера приложений"));
 
-	CInstallerDlg dlg;
+	CWelcomePage dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
