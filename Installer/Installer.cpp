@@ -5,6 +5,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "Installer.h"
+
 #include "CWelcomePage.h"
 
 #ifdef _DEBUG
@@ -38,10 +39,11 @@ BOOL CInstallerApp::InitInstance()
 {
 	CWinApp::InitInstance();
 
-	CWelcomePage dlg;
-	m_pMainWnd = &dlg;
-	dlg.DoModal();
+	CWelcomePage* pDlg = new CWelcomePage;
+	pDlg->Create(IDD_DIALOG_WELCOME_PAGE);
+	pDlg->ShowWindow(SW_SHOW);
+	m_pMainWnd = pDlg;
 
-	return FALSE;
+	return TRUE;
 }
 

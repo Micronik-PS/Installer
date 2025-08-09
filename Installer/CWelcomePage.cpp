@@ -28,7 +28,16 @@ void CWelcomePage::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CWelcomePage, CDialogEx)
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 
 // Обработчики сообщений CWelcomePage
+
+void CWelcomePage::OnClose()
+{
+	
+	
+	CDialogEx::OnClose();
+	delete this;
+}
