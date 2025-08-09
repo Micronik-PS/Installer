@@ -15,7 +15,7 @@
 // CInstallerApp
 
 BEGIN_MESSAGE_MAP(CInstallerApp, CWinApp)
-	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
+	
 END_MESSAGE_MAP()
 
 
