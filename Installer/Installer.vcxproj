@@ -207,9 +207,9 @@
     <None Include="res\Installer.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\7Zip_Logo.png" />
     <Image Include="res\Installer.ico" />
-    <Image Include="res\XnView_Logo.png" />
+    <Image Include="res\XnView_Logo.bmp" />
+    <Image Include="res\Zip_Logo.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
