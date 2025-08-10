@@ -212,8 +212,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Installer.ico" />
-    <Image Include="res\XnView_Logo.bmp" />
-    <Image Include="res\Zip_Logo.bmp" />
+    <Image Include="res\XnView_Logo.png" />
+    <Image Include="res\ZIP_Logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

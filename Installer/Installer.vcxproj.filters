@@ -65,10 +65,10 @@
     <Image Include="res\Installer.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="res\XnView_Logo.bmp">
+    <Image Include="res\XnView_Logo.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="res\Zip_Logo.bmp">
+    <Image Include="res\ZIP_Logo.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
