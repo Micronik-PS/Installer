@@ -185,6 +185,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseDialog.h" />
+    <ClInclude Include="OfferPage.h" />
     <ClInclude Include="WelcomePage.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Installer.h" />
@@ -194,6 +196,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseDialog.cpp" />
+    <ClCompile Include="OfferPage.cpp" />
     <ClCompile Include="WelcomePage.cpp" />
     <ClCompile Include="Installer.cpp" />
     <ClCompile Include="pch.cpp">

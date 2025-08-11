@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include "PictureCtrl.h"
+#include "BaseDialog.h"
 
-
-class CWelcomePage : public CDialogEx
+class CWelcomePage : public CBaseDialog
 {
 	DECLARE_DYNAMIC(CWelcomePage)
 
@@ -27,14 +27,6 @@ public:
 	virtual BOOL OnInitDialog();
 
 private:
-	CFont m_titleFont;
-	CFont m_bodyFont;
-
 	CPictureCtrl m_logoZip;
 	CPictureCtrl m_logoXnView;
-
-	void InitTitleFont();
-	void InitBodyFont();
-	void SetLogo(const int nIDS_filePathToLogo, CPictureCtrl& placement);
-	void SetText(const int nIDC_staticText, const int nIDS_text, CFont* const font);
 };
