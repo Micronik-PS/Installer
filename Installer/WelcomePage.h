@@ -29,4 +29,5 @@ public:
 private:
 	CPictureCtrl m_logoZip;
 	CPictureCtrl m_logoXnView;
+	virtual void PostNcDestroy();
 };

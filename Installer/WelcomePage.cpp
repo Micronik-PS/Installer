@@ -23,7 +23,7 @@ void CWelcomePage::DoDataExchange(CDataExchange* pDX)
 }
 
 
-BEGIN_MESSAGE_MAP(CWelcomePage, CDialogEx)
+BEGIN_MESSAGE_MAP(CWelcomePage, CBaseDialog)
 	ON_WM_CLOSE()
 	ON_BN_CLICKED(IDC_WELCOME_PAGE_BUTTON_NEXT, &CWelcomePage::OnBnClickedWelcomePageButtonNext)
 	ON_BN_CLICKED(IDC_WELCOME_PAGE_BUTTON_CANCEL, &CWelcomePage::OnBnClickedWelcomePageButtonCancel)
@@ -32,8 +32,7 @@ END_MESSAGE_MAP()
 
 void CWelcomePage::OnClose()
 {
-	CBaseDialog::OnClose();
-	delete this;
+	DestroyWindow();
 }
 
 BOOL CWelcomePage::OnInitDialog()
@@ -57,10 +56,16 @@ BOOL CWelcomePage::OnInitDialog()
 
 void CWelcomePage::OnBnClickedWelcomePageButtonNext()
 {
-	
+	theApp.OnCloseWelcomePage(false);
 }
 
 void CWelcomePage::OnBnClickedWelcomePageButtonCancel()
 {
-	PostMessage(WM_CLOSE);
+	theApp.OnCloseWelcomePage(true);
+}
+
+void CWelcomePage::PostNcDestroy()
+{
+	CBaseDialog::PostNcDestroy();
+	delete this;
 }

@@ -187,6 +187,7 @@
   <ItemGroup>
     <ClInclude Include="BaseDialog.h" />
     <ClInclude Include="OfferPage.h" />
+    <ClInclude Include="ProgramInstallStatus.h" />
     <ClInclude Include="WelcomePage.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Installer.h" />
@@ -198,6 +199,7 @@
   <ItemGroup>
     <ClCompile Include="BaseDialog.cpp" />
     <ClCompile Include="OfferPage.cpp" />
+    <ClCompile Include="ProgramInstallStatus.cpp" />
     <ClCompile Include="WelcomePage.cpp" />
     <ClCompile Include="Installer.cpp" />
     <ClCompile Include="pch.cpp">

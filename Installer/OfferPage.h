@@ -9,7 +9,18 @@ class COfferPage : public CBaseDialog
 	DECLARE_DYNAMIC(COfferPage)
 
 public:
-	COfferPage(CWnd* pParent = nullptr);
+	
+	COfferPage
+	(
+		ProgramInstallStatus& offerApp,
+		const int nIDS_OFFER_PAGE_HEAD, 
+		const int nIDS_OFFER_PAGE_TITLE, 
+		const int nIDS_PATH_LOGO, 
+		const int nIDS_OFFER_PAGE_DESCRIPTION, 
+		const int nIDS_OFFER_PAGE_LICENSE_URL,
+		CWnd* pParent = nullptr
+	);
+
 	virtual ~COfferPage();
 
 #ifdef AFX_DESIGN_TIME
@@ -23,7 +34,20 @@ protected:
 
 public:
 	afx_msg void OnClose();
-private:
-	CPictureCtrl m_offerLogo;
+	virtual BOOL OnInitDialog();
 
+private:
+	ProgramInstallStatus& m_offerApp;
+	CPictureCtrl m_offerLogo;
+	CMFCLinkCtrl m_licenseUrl;
+
+	const int m_nIDS_OFFER_PAGE_HEAD;
+	const int m_nIDS_OFFER_PAGE_TITLE;
+	const int m_nIDS_PATH_LOGO;
+	const int m_nIDS_OFFER_PAGE_DESCRIPTION;
+	const int m_nIDS_OFFER_PAGE_LICENSE_URL;
+public:
+	afx_msg void OnBnClickedOfferPageButtonAccept();
+	afx_msg void OnBnClickedOfferPageButtonCancel();
+	virtual void PostNcDestroy();
 };
