@@ -4,10 +4,12 @@
 
 #include "WelcomePage.h"
 #include "OfferPage.h"
+#include "ProgressPage.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+
 
 BEGIN_MESSAGE_MAP(CInstallerApp, CWinApp)
 	
@@ -38,11 +40,11 @@ BOOL CInstallerApp::InitInstance()
 
 bool CInstallerApp::TryOpenOfferPage()
 {
-    COfferPage* pDlg = nullptr;
+    COfferPage* offerPage = nullptr;
 
     if (m_sevenZip == ProgramInstallStatus::None)
     {
-        pDlg = new COfferPage // очищается в COfferPage::PostNcDestroy()
+        offerPage = new COfferPage // очищается в COfferPage::PostNcDestroy()
         (
             m_sevenZip,
             IDS_OFFER_PAGE_HEAD_ZIP,
@@ -54,7 +56,7 @@ bool CInstallerApp::TryOpenOfferPage()
     }
     else if (m_xnView == ProgramInstallStatus::None)
     {
-        pDlg = new COfferPage // очищается в COfferPage::PostNcDestroy()
+        offerPage = new COfferPage // очищается в COfferPage::PostNcDestroy()
         (
             m_xnView,
             IDS_OFFER_PAGE_HEAD_XNVIEW,
@@ -69,11 +71,29 @@ bool CInstallerApp::TryOpenOfferPage()
         return false;
     }
 
-    m_pMainWnd = pDlg;
-    pDlg->Create(IDD_DIALOG_OFFER_PAGE);
-    pDlg->ShowWindow(SW_SHOW);
+    m_pMainWnd = offerPage;
+    offerPage->Create(IDD_DIALOG_OFFER_PAGE);
+    offerPage->ShowWindow(SW_SHOW);
 
     return true;
+}
+
+bool CInstallerApp::TryOpenProgressPage()
+{
+    if
+    (
+        m_sevenZip == ProgramInstallStatus::MarkedForInstall ||
+        m_xnView == ProgramInstallStatus::MarkedForInstall
+    )
+    {
+        CProgressPage* offerPage = new CProgressPage;
+        m_pMainWnd = offerPage;
+        offerPage->Create(IDD_DIALOG_PROGRESS_PAGE);
+        offerPage->ShowWindow(SW_SHOW);
+
+        return true;
+    }
+    return false;
 }
 
 void CInstallerApp::OnCloseWelcomePage(bool canceled)
@@ -87,18 +107,25 @@ void CInstallerApp::OnCloseWelcomePage(bool canceled)
         pastPage = AfxGetMainWnd();
         if (!TryOpenOfferPage())
         {
-            //Progress Page
+            if (!TryOpenProgressPage())
+            {
+                // Finish Page
+            }
         }
     }
 }
 
 void CInstallerApp::OnCloseOfferPage(bool canceled, ProgramInstallStatus& offerApp)
 {
-    pastPage = AfxGetMainWnd();
     offerApp = canceled ? ProgramInstallStatus::Canceled : ProgramInstallStatus::MarkedForInstall;
+
+    pastPage = AfxGetMainWnd();
     if (!TryOpenOfferPage())
     {
-        //Progress Page
+        if (!TryOpenProgressPage())
+        {
+            // Finish Page
+        }
     }
 }
 

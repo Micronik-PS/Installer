@@ -28,6 +28,7 @@ private:
 	bool IsProgramInstalled(const int nIDS_PATH_REGISTER_KEY, const int nIDS_REGISTER_VALUE_ZIP);
 	void OpenWelcomePage();
 	bool CInstallerApp::TryOpenOfferPage();
+	bool CInstallerApp::TryOpenProgressPage();
 
 	CWnd* pastPage;
 
