@@ -23,7 +23,7 @@ CInstallerApp::CInstallerApp()
     const OfferProgram SevenZip
     (
         IDS_OFFER_PROGRAM_NAME_ZIP,
-        IDS_PATH_LOGO_ZIP,
+        IDB_LOGO_ZIP,
         IDS_LICENSE_URL_ZIP,
         IDS_DESCRIPTION_ZIP,
         IDS_PATH_REGISTER_KEY_ZIP,
@@ -35,7 +35,7 @@ CInstallerApp::CInstallerApp()
     const OfferProgram XnView
     (
         IDS_OFFER_PROGRAM_NAME_XNVIEW,
-        IDS_PATH_LOGO_XNVIEW,
+        IDB_LOGO_XNVIEW,
         IDS_LICENSE_URL_XNVIEW,
         IDS_DESCRIPTION_XNVIEW,
         IDS_PATH_REGISTER_KEY_XNVIEW,

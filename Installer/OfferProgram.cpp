@@ -4,7 +4,7 @@
 OfferProgram::OfferProgram
 (
 	const int nIDS_OFFER_PROGRAM_NAME, 
-	const int nIDS_PATH_LOGO, 
+	const int nIDB_LOGO,
 	const int nIDS_LICENSE_URL, 
 	const int nIDS_DESCRIPTION, 
 	const int nIDS_PATH_REGISTER_KEY, 
@@ -15,7 +15,7 @@ OfferProgram::OfferProgram
 	const ProgramInstallStatus installStatus /* = ProgramInstallStatus::Error*/
 )
 	: nIDS_OFFER_PROGRAM_NAME { nIDS_OFFER_PROGRAM_NAME }
-	, nIDS_PATH_LOGO { nIDS_PATH_LOGO }
+	, nIDB_LOGO{ nIDB_LOGO }
 	, nIDS_LICENSE_URL { nIDS_LICENSE_URL }
 	, nIDS_DESCRIPTION { nIDS_DESCRIPTION }
 	, nIDS_PATH_REGISTER_KEY { nIDS_PATH_REGISTER_KEY }
@@ -29,7 +29,7 @@ OfferProgram::OfferProgram
 
 OfferProgram::OfferProgram() 
 	: nIDS_OFFER_PROGRAM_NAME{ 0 }
-	, nIDS_PATH_LOGO{ 0 }
+	, nIDB_LOGO{ 0 }
 	, nIDS_LICENSE_URL{ 0 }
 	, nIDS_DESCRIPTION{ 0 }
 	, nIDS_PATH_REGISTER_KEY{ 0 }

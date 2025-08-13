@@ -2,7 +2,6 @@
 #include "Installer.h"
 #include "afxdialogex.h"
 #include "BaseDialog.h"
-#include "PictureCtrl.h"
 
 IMPLEMENT_DYNAMIC(CBaseDialog, CDialogEx)
 
@@ -69,14 +68,18 @@ void CBaseDialog::InitBodyFont()
 	);
 }
 
-void CBaseDialog::SetPictureForControl(const int nIDS_filePathToPicture, CPictureCtrl& placement)
+void CBaseDialog::SetPictureForControl(const int nIDB, CStatic& placement, const int pictureWidth, const int pictureHeight)
 {
-	CString pathToPicture;
+	HBITMAP hBitmap = (HBITMAP)::LoadImage(
+		AfxGetInstanceHandle(),
+		MAKEINTRESOURCE(nIDB),
+		IMAGE_BITMAP,
+		pictureWidth,
+		pictureHeight,
+		LR_CREATEDIBSECTION
+	);
 
-	if (pathToPicture.LoadString(nIDS_filePathToPicture) != NULL)
-	{
-		placement.LoadFromFile(pathToPicture);
-	}
+	placement.SetBitmap(hBitmap);
 }
 
 void CBaseDialog::SetTextForControl(const int nIDC_staticText, const int nIDS_text, CFont* const font)

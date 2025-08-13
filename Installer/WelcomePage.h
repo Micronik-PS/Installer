@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "afxdialogex.h"
-#include "PictureCtrl.h"
 #include "BaseDialog.h"
 
 class CWelcomePage : public CBaseDialog
@@ -27,7 +26,8 @@ public:
 	virtual BOOL OnInitDialog();
 
 private:
-	CPictureCtrl m_logoZip;
-	CPictureCtrl m_logoXnView;
+	CStatic m_logoZip;
+	CStatic m_logoXnView;
+
 	virtual void PostNcDestroy();
 };

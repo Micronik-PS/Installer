@@ -4,7 +4,7 @@
 struct OfferProgram
 {
 	int nIDS_OFFER_PROGRAM_NAME;
-	int nIDS_PATH_LOGO;
+	int nIDB_LOGO;
 	int nIDS_LICENSE_URL;
 	int nIDS_DESCRIPTION;
 	int nIDS_PATH_REGISTER_KEY;
@@ -19,7 +19,7 @@ struct OfferProgram
 	OfferProgram
 	(
 		const int nIDS_OFFER_PROGRAM_NAME,
-		const int nIDS_PATH_LOGO,
+		const int nIDB_LOGO,
 		const int nIDS_LICENSE_URL,
 		const int nIDS_DESCRIPTION,
 		const int nIDS_PATH_REGISTER_KEY,

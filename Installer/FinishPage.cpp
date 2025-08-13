@@ -18,8 +18,8 @@ CFinishPage::~CFinishPage()
 void CFinishPage::DoDataExchange(CDataExchange* pDX)
 {
 	CBaseDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_FINISH_PAGE_PICTURE_ZIP, m_logoZip);
-	DDX_Control(pDX, IDC_FINISH_PAGE_PICTURE_XNVIEW, m_logoXnView);
+	DDX_Control(pDX, IDC_FINISH_PAGE_PICTURE_CONTROL_ZIP, m_logoZip);
+	DDX_Control(pDX, IDC_FINISH_PAGE_PICTURE_CONTROL_XNVIEW, m_logoXnView);
 }
 
 BEGIN_MESSAGE_MAP(CFinishPage, CBaseDialog)
@@ -36,8 +36,8 @@ BOOL CFinishPage::OnInitDialog()
 	SetDialogHead(IDI_APP, IDS_FINISH_PAGE_HEAD);
 
 	// Лого приложений
-	SetPictureForControl(IDS_PATH_LOGO_ZIP, m_logoZip);
-	SetPictureForControl(IDS_PATH_LOGO_XNVIEW, m_logoXnView);
+	SetPictureForControl(IDB_LOGO_ZIP, m_logoZip);
+	SetPictureForControl(IDB_LOGO_XNVIEW, m_logoXnView);
 
 	// Текст
 	SetTextForControl(IDC_FINISH_PAGE_STATIC_TEXT_TITLE, IDS_FINISH_PAGE_TITLE, &m_titleFont);

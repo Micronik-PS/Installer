@@ -23,7 +23,7 @@ protected:
 	void InitTitleFont();
 	void InitBodyFont();
 
-	void SetPictureForControl(const int nIDS_filePathToPicture, CPictureCtrl& placement);
+	void SetPictureForControl(const int nIDB, CStatic& placement, const int pictureWidth = 150, const int pictureHeight = 150);
 
 	void SetTextForControl(const int nIDC_staticText, const int nIDS_text, CFont* const font);
 	void SetTextForControl(const int nIDC_staticText, const CString& text, CFont* const font);

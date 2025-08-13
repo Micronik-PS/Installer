@@ -18,8 +18,8 @@ CWelcomePage::~CWelcomePage()
 void CWelcomePage::DoDataExchange(CDataExchange* pDX)
 {
 	CBaseDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_WELCOME_PAGE_PICTURE_ZIP, m_logoZip);
-	DDX_Control(pDX, IDC_WELCOME_PAGE_PICTURE_XNVIEW, m_logoXnView);
+	DDX_Control(pDX, IDC_WELCOME_PAGE_PICTURE_CONTROL_ZIP, m_logoZip);
+	DDX_Control(pDX, IDC_WELCOME_PAGE_PICTURE_CONTROL_XNVIEW, m_logoXnView);
 }
 
 
@@ -42,14 +42,15 @@ BOOL CWelcomePage::OnInitDialog()
 	SetDialogHead(IDI_APP, IDS_WELCOME_PAGE_HEAD);
 
 	// Лого приложений
-	SetPictureForControl(IDS_PATH_LOGO_ZIP, m_logoZip);
-	SetPictureForControl(IDS_PATH_LOGO_XNVIEW, m_logoXnView);
+	SetPictureForControl(IDB_LOGO_ZIP, m_logoZip);
+	SetPictureForControl(IDB_LOGO_XNVIEW, m_logoXnView);
 	
 	// Текст
 	SetTextForControl(IDC_WELCOME_PAGE_STATIC_TEXT_TITLE, IDS_WELCOME_PAGE_TITLE, &m_titleFont);
 	SetTextForControl(IDC_WELCOME_PAGE_STATIC_TEXT_BODY, IDS_WELCOME_PAGE_BODY, &m_bodyFont);
 	SetTextForControl(IDC_WELCOME_PAGE_BUTTON_NEXT, IDS_WELCOME_PAGE_BUTTON_NEXT, &m_bodyFont);
 	SetTextForControl(IDC_WELCOME_PAGE_BUTTON_CANCEL, IDS_WELCOME_PAGE_BUTTON_CANCEL, &m_bodyFont);
+
 
 	return TRUE;
 }

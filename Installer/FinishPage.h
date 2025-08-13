@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include "BaseDialog.h"
-#include "PictureCtrl.h"
 
 class CFinishPage : public CBaseDialog
 {
@@ -27,6 +26,6 @@ public:
 	afx_msg void OnBnClickedFinishPageButtonExit();
 
 private:
-	CPictureCtrl m_logoZip;
-	CPictureCtrl m_logoXnView;
+	CStatic m_logoZip;
+	CStatic m_logoXnView;
 };

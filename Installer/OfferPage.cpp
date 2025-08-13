@@ -51,7 +51,7 @@ BOOL COfferPage::OnInitDialog()
 	SetTextForControl(IDC_OFFER_PAGE_BUTTON_CANCEL, IDS_OFFER_PAGE_BUTTON_CANCEL, &m_bodyFont);
 	SetTextForControl(IDC_OFFER_PAGE_MFCLINK_LICENSE, IDS_OFFER_PAGE_LICENSE, &m_bodyFont);
 
-	SetPictureForControl(m_offerProgram.nIDS_PATH_LOGO, m_offerLogo);
+	SetPictureForControl(m_offerProgram.nIDB_LOGO, m_offerLogo);
 
 	CString url;
 	if (url.LoadString(m_offerProgram.nIDS_LICENSE_URL) != NULL)

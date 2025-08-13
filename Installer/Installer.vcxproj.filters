@@ -33,9 +33,6 @@
     <ClInclude Include="WelcomePage.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="PictureCtrl.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="OfferPage.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -69,9 +66,6 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="WelcomePage.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="PictureCtrl.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="OfferPage.cpp">
@@ -110,13 +104,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\XnView_Logo.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="res\ZIP_Logo.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
     <Image Include="res\Application_Icon.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="res\XnView_Logo.bmp">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="res\ZIP_Logo.bmp">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>

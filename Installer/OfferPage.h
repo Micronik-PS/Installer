@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "afxdialogex.h"
-#include "PictureCtrl.h"
 #include "BaseDialog.h"
 
 
@@ -29,7 +28,7 @@ public:
 
 private:
 	OfferProgram& m_offerProgram;
-	CPictureCtrl m_offerLogo;
+	CStatic m_offerLogo;
 	CMFCLinkCtrl m_licenseUrl;
 
 	CString GetHeadText(int nIDS_OFFER_PROGRAM_NAME);
