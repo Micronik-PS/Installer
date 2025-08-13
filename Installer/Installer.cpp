@@ -8,6 +8,8 @@
 #include "ProgressBarUpdateData.h"
 #include "OfferProgram.h"
 #include "FinishPage.h"
+#include <Wininet.h>
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -247,6 +249,7 @@ bool CInstallerApp::TryDownloadExeInstaller(OfferProgram& offerProgram, Progress
     CString exeInstallerUrl;
     exeInstallerUrl.LoadString(offerProgram.nIDS_INSTALLER_URL);
 
+    DeleteUrlCacheEntry(exeInstallerUrl);
     const HRESULT downloadResult = URLDownloadToFile
     (
         NULL,
