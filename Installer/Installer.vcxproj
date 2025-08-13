@@ -186,6 +186,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseDialog.h" />
+    <ClInclude Include="FinishPage.h" />
     <ClInclude Include="OfferProgram.h" />
     <ClInclude Include="ProgressBarUpdateData.h" />
     <ClInclude Include="InstallProgressCtrl.h" />
@@ -202,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseDialog.cpp" />
+    <ClCompile Include="FinishPage.cpp" />
     <ClCompile Include="OfferProgram.cpp" />
     <ClCompile Include="ProgressBarUpdateData.cpp" />
     <ClCompile Include="InstallProgressCtrl.cpp" />

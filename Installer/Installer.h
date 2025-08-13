@@ -24,6 +24,7 @@ public:
 public:
 	void OnCloseWelcomePage(bool canceled);
 	void OnCloseOfferPage(bool canceled, ProgramInstallStatus& offerProgramInstallStatus);
+	void OnCloseProgressPage();
 	void OnOpenPage();
 	static UINT StartDeploy(LPVOID pParam);
 	UINT GetCountOfferProgramMarkedForInstall();
@@ -36,6 +37,7 @@ private:
 	void OpenWelcomePage();
 	bool TryOpenOfferPage();
 	bool TryOpenProgressPage();
+	void OpenFinishPage();
 	bool TryDownloadExeInstaller(OfferProgram& offerProgram, ProgressBarUpdateData& progressBarUpdateDownloadData);
 	bool TryInstallOfferProgram(OfferProgram& offerProgram, ProgressBarUpdateData& progressBarUpdateInstallData);
 	CString GetExeInstallerPath() const;

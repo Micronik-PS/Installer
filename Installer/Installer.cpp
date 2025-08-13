@@ -7,6 +7,7 @@
 #include "ProgressPage.h"
 #include "ProgressBarUpdateData.h"
 #include "OfferProgram.h"
+#include "FinishPage.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -118,6 +119,14 @@ bool CInstallerApp::TryOpenProgressPage()
     return someoneIsMarkedForInstall;
 }
 
+void CInstallerApp::OpenFinishPage()
+{
+    CFinishPage* finishPage = new CFinishPage; // очищается в CFinishPage::PostNcDestroy()
+    m_pMainWnd = finishPage;
+    finishPage->Create(IDD_DIALOG_FINISH_PAGE);
+    finishPage->ShowWindow(SW_SHOW);
+}
+
 CString CInstallerApp::GetExeInstallerPath() const
 {
     TCHAR tempPath[MAX_PATH] = { 0 };
@@ -159,7 +168,7 @@ void CInstallerApp::OnCloseWelcomePage(bool canceled)
         {
             if (!TryOpenProgressPage())
             {
-                // Finish Page
+                OpenFinishPage();
             }
         }
     }
@@ -176,9 +185,15 @@ void CInstallerApp::OnCloseOfferPage(bool canceled, ProgramInstallStatus& offerP
     {
         if (!TryOpenProgressPage())
         {
-            // Finish Page
+            OpenFinishPage();
         }
     }
+}
+
+void CInstallerApp::OnCloseProgressPage()
+{
+    pastPage = AfxGetMainWnd();
+    OpenFinishPage();
 }
 
 void CInstallerApp::OnOpenPage()
@@ -340,7 +355,9 @@ UINT CInstallerApp::StartDeploy(LPVOID pParam)
         ) ? ProgramInstallStatus::Installed : ProgramInstallStatus::Error;
     }
 
-    // Finish Page
+    CWnd* progressPage = AfxGetMainWnd();
+    PostMessage(progressPage->GetSafeHwnd(), WM_INSTALL_ENDED, NULL, NULL);
+
     return 0;
 }
 

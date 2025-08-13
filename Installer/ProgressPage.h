@@ -4,6 +4,7 @@
 #include "InstallProgressCtrl.h"
 #include "ProgramInstallStatus.h"
 
+#define WM_INSTALL_ENDED (WM_USER + 1)
 
 class CProgressPage : public CBaseDialog
 {
@@ -31,4 +32,6 @@ public:
 
 private:
 	CInstallProgressCtrl m_progressBar;
+
+	afx_msg LRESULT OnInstallEnded(WPARAM wParam, LPARAM lParam);
 };

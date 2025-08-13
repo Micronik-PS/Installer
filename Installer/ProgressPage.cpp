@@ -26,6 +26,7 @@ void CProgressPage::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CProgressPage, CBaseDialog)
 	ON_WM_CLOSE()
+	ON_MESSAGE(WM_INSTALL_ENDED, &CProgressPage::OnInstallEnded)
 END_MESSAGE_MAP()
 
 void CProgressPage::OnClose()
@@ -97,4 +98,10 @@ void CProgressPage::UpdateStatus(bool doesDeployCompleted)
 		doesDeployCompleted ? IDS_PROGRESS_PAGE_STATUS_END : IDS_PROGRESS_PAGE_STATUS_START, 
 		&m_bodyFont
 	);
+}
+
+LRESULT CProgressPage::OnInstallEnded(WPARAM wParam, LPARAM lParam)
+{
+	theApp.OnCloseProgressPage();
+	return 0;
 }
