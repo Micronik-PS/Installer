@@ -28,4 +28,12 @@ public:
 private:
 	CStatic m_logoZip;
 	CStatic m_logoXnView;
+
+	void OutputInstallResults(const int nIDC_staticText);
+	void OutputInstallResultsCategory
+	(
+		CArray<OfferProgram*>& installResultsCategory,
+		const int nIDC_staticText,
+		const int nIDS_staticTextCategory
+	);
 };

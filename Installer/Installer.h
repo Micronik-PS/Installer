@@ -22,6 +22,8 @@ public:
 	DECLARE_MESSAGE_MAP()
 
 public:
+	CArray<OfferProgram> m_offerPrograms;
+
 	void OnCloseWelcomePage(bool canceled);
 	void OnCloseOfferPage(bool canceled, ProgramInstallStatus& offerProgramInstallStatus);
 	void OnCloseProgressPage();
@@ -31,7 +33,6 @@ public:
 
 private:
 	CWnd* pastPage;
-	CArray<OfferProgram> m_offerPrograms;
 
 	bool IsProgramInstalled(const int nIDS_PATH_REGISTER_KEY, const int nIDS_REGISTER_VALUE);
 	void OpenWelcomePage();

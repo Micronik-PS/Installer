@@ -100,6 +100,24 @@ void CBaseDialog::SetTextForControl(const int nIDC_staticText, const CString& te
 	textControl->SetWindowText(text);
 }
 
+void CBaseDialog::AddTextInControl(const int nIDC_staticText, const int nIDS_text)
+{
+	CString addedText;
+	addedText.LoadString(nIDS_text);
+
+	AddTextInControl(nIDC_staticText, addedText);
+}
+
+void CBaseDialog::AddTextInControl(const int nIDC_staticText, const CString& text)
+{
+	auto textControl = GetDlgItem(nIDC_staticText);
+
+	CString previousText;
+	textControl->GetWindowText(previousText);
+
+	SetTextForControl(nIDC_staticText, previousText + text, textControl->GetFont());
+}
+
 void CBaseDialog::SetDialogHead(const int nIDI_applicationIcon, const int nIDS_headText)
 {
 	CString headText;

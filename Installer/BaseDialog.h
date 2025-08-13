@@ -8,11 +8,11 @@ class CBaseDialog : public CDialogEx
 	DECLARE_DYNAMIC(CBaseDialog)
 
 public:
-	CBaseDialog(UINT nIDTemplate, CWnd* pParent = nullptr);   // стандартный конструктор
+	CBaseDialog(UINT nIDTemplate, CWnd* pParent = nullptr);
 	virtual ~CBaseDialog();
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // поддержка DDX/DDV
+	virtual void DoDataExchange(CDataExchange* pDX);
 
 	DECLARE_MESSAGE_MAP()
 
@@ -27,6 +27,9 @@ protected:
 
 	void SetTextForControl(const int nIDC_staticText, const int nIDS_text, CFont* const font);
 	void SetTextForControl(const int nIDC_staticText, const CString& text, CFont* const font);
+
+	void AddTextInControl(const int nIDC_staticText, const int nIDS_text);
+	void AddTextInControl(const int nIDC_staticText, const CString& text);
 
 	void SetDialogHead(const int nIDI_applicationIcon, const int nIDS_headText);
 	void SetDialogHead(const int nIDI_applicationIcon, const CString& headText);
