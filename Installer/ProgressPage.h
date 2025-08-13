@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include "BaseDialog.h"
+#include "InstallProgressCtrl.h"
+#include "ProgramInstallStatus.h"
+
 
 class CProgressPage : public CBaseDialog
 {
@@ -18,8 +21,14 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);
 
 	DECLARE_MESSAGE_MAP()
+
 public:
 	afx_msg void OnClose();
 	virtual void PostNcDestroy();
 	virtual BOOL OnInitDialog();
+	void UpdateStatus(const int nIDS_OFFER_PROGRAM_NAME, const ProgramInstallStatus& installStatus);
+	void UpdateStatus(bool doesDeployCompleted);
+
+private:
+	CInstallProgressCtrl m_progressBar;
 };

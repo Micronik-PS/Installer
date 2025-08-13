@@ -7,22 +7,9 @@
 IMPLEMENT_DYNAMIC(COfferPage, CBaseDialog)
 
 
-COfferPage::COfferPage
-(
-	ProgramInstallStatus& offerApp,
-	const int nIDS_OFFER_PAGE_HEAD,
-	const int nIDS_OFFER_PAGE_TITLE, 
-	const int nIDS_PATH_LOGO, 
-	const int nIDS_OFFER_PAGE_DESCRIPTION, 
-	const int nIDS_OFFER_PAGE_LICENSE_URL, 
-	CWnd* pParent
-)	: CBaseDialog(IDD_DIALOG_OFFER_PAGE, pParent)
-	, m_offerApp{ offerApp }
-	, m_nIDS_OFFER_PAGE_HEAD { nIDS_OFFER_PAGE_HEAD }
-	, m_nIDS_OFFER_PAGE_TITLE { nIDS_OFFER_PAGE_TITLE }
-	, m_nIDS_PATH_LOGO { nIDS_PATH_LOGO }
-	, m_nIDS_OFFER_PAGE_DESCRIPTION { nIDS_OFFER_PAGE_DESCRIPTION }
-	, m_nIDS_OFFER_PAGE_LICENSE_URL { nIDS_OFFER_PAGE_LICENSE_URL }
+COfferPage::COfferPage(OfferProgram& offerProgram, CWnd* pParent)
+	: CBaseDialog(IDD_DIALOG_OFFER_PAGE, pParent)
+	, m_offerProgram{ offerProgram }
 {
 }
 
@@ -56,18 +43,18 @@ BOOL COfferPage::OnInitDialog()
 
 	theApp.OnOpenPage();
 
-	SetDialogHead(IDI_APP, m_nIDS_OFFER_PAGE_HEAD);
+	SetDialogHead(IDI_APP, GetHeadText(m_offerProgram.nIDS_OFFER_PROGRAM_NAME));
 
-	SetTextForControl(IDC_OFFER_PAGE_STATIC_TEXT_TITLE, m_nIDS_OFFER_PAGE_TITLE, &m_titleFont);
-	SetTextForControl(IDC_OFFER_PAGE_STATIC_TEXT_DESCRIPTION, m_nIDS_OFFER_PAGE_DESCRIPTION, &m_bodyFont);
+	SetTextForControl(IDC_OFFER_PAGE_STATIC_TEXT_TITLE, GetTitleText(m_offerProgram.nIDS_OFFER_PROGRAM_NAME), &m_titleFont);
+	SetTextForControl(IDC_OFFER_PAGE_STATIC_TEXT_DESCRIPTION, m_offerProgram.nIDS_DESCRIPTION, &m_bodyFont);
 	SetTextForControl(IDC_OFFER_PAGE_BUTTON_ACCEPT, IDS_OFFER_PAGE_BUTTON_ACCEPT, &m_bodyFont);
 	SetTextForControl(IDC_OFFER_PAGE_BUTTON_CANCEL, IDS_OFFER_PAGE_BUTTON_CANCEL, &m_bodyFont);
 	SetTextForControl(IDC_OFFER_PAGE_MFCLINK_LICENSE, IDS_OFFER_PAGE_LICENSE, &m_bodyFont);
 
-	SetPictureForControl(m_nIDS_PATH_LOGO, m_offerLogo);
+	SetPictureForControl(m_offerProgram.nIDS_PATH_LOGO, m_offerLogo);
 
 	CString url;
-	if (url.LoadString(m_nIDS_OFFER_PAGE_LICENSE_URL) != NULL)
+	if (url.LoadString(m_offerProgram.nIDS_LICENSE_URL) != NULL)
 	{
 		m_licenseUrl.SetURL(url);
 	}
@@ -75,14 +62,36 @@ BOOL COfferPage::OnInitDialog()
 	return TRUE;
 }
 
+CString COfferPage::GetHeadText(int nIDS_OFFER_PROGRAM_NAME)
+{
+	CString staticOfferPageHead;
+	staticOfferPageHead.LoadString(IDS_OFFER_PAGE_HEAD);
+
+	CString offerProgramName;
+	offerProgramName.LoadString(nIDS_OFFER_PROGRAM_NAME);
+
+	return staticOfferPageHead + offerProgramName;
+}
+
+CString COfferPage::GetTitleText(int nIDS_OFFER_PROGRAM_NAME)
+{
+	CString staticTitle;
+	staticTitle.LoadString(IDS_OFFER_PAGE_TITLE);
+
+	CString offerProgramName;
+	offerProgramName.LoadString(nIDS_OFFER_PROGRAM_NAME);
+
+	return staticTitle + offerProgramName;
+}
+
 void COfferPage::OnBnClickedOfferPageButtonAccept()
 {
-	theApp.OnCloseOfferPage(false, m_offerApp);
+	theApp.OnCloseOfferPage(false, m_offerProgram.installStatus);
 }
 
 void COfferPage::OnBnClickedOfferPageButtonCancel()
 {
-	theApp.OnCloseOfferPage(true, m_offerApp);
+	theApp.OnCloseOfferPage(true, m_offerProgram.installStatus);
 }
 
 void COfferPage::PostNcDestroy()

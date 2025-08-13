@@ -24,7 +24,10 @@ protected:
 	void InitBodyFont();
 
 	void SetPictureForControl(const int nIDS_filePathToPicture, CPictureCtrl& placement);
+
 	void SetTextForControl(const int nIDC_staticText, const int nIDS_text, CFont* const font);
+	void SetTextForControl(const int nIDC_staticText, const CString& text, CFont* const font);
 
 	void SetDialogHead(const int nIDI_applicationIcon, const int nIDS_headText);
+	void SetDialogHead(const int nIDI_applicationIcon, const CString& headText);
 };

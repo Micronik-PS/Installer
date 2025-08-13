@@ -6,6 +6,8 @@
 
 #include "resource.h"
 #include "ProgramInstallStatus.h"
+#include "OfferProgram.h"
+#include "ProgressBarUpdateData.h"
 
 class CWelcomePage;
 
@@ -21,20 +23,22 @@ public:
 
 public:
 	void OnCloseWelcomePage(bool canceled);
-	void OnCloseOfferPage(bool canceled, ProgramInstallStatus& offerApp);
+	void OnCloseOfferPage(bool canceled, ProgramInstallStatus& offerProgramInstallStatus);
 	void OnOpenPage();
+	static UINT StartDeploy(LPVOID pParam);
+	UINT GetCountOfferProgramMarkedForInstall();
 
 private:
-	bool IsProgramInstalled(const int nIDS_PATH_REGISTER_KEY, const int nIDS_REGISTER_VALUE_ZIP);
-	void OpenWelcomePage();
-	bool CInstallerApp::TryOpenOfferPage();
-	bool CInstallerApp::TryOpenProgressPage();
-
 	CWnd* pastPage;
+	CArray<OfferProgram> m_offerPrograms;
 
-	ProgramInstallStatus m_sevenZip;
-	ProgramInstallStatus m_xnView;
-
+	bool IsProgramInstalled(const int nIDS_PATH_REGISTER_KEY, const int nIDS_REGISTER_VALUE);
+	void OpenWelcomePage();
+	bool TryOpenOfferPage();
+	bool TryOpenProgressPage();
+	bool TryDownloadExeInstaller(OfferProgram& offerProgram, ProgressBarUpdateData& progressBarUpdateDownloadData);
+	bool TryInstallOfferProgram(OfferProgram& offerProgram, ProgressBarUpdateData& progressBarUpdateInstallData);
+	CString GetExeInstallerPath() const;
 };
 
 extern CInstallerApp theApp;

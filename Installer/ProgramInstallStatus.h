@@ -3,9 +3,11 @@
 enum class ProgramInstallStatus
 {
 	None,
-	Installed,
 	Canceled,
 	BeforeInstalled,
-	Error,
-	MarkedForInstall
+	MarkedForInstall,
+	StartedInstall,
+	StartedDownload,
+	Installed,
+	Error
 };

@@ -48,6 +48,15 @@
     <ClInclude Include="ProgressPage.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="ProgressBarUpdateData.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallProgressCtrl.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="OfferProgram.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Installer.cpp">
@@ -72,6 +81,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="ProgressPage.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressBarUpdateData.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="InstallProgressCtrl.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="OfferProgram.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

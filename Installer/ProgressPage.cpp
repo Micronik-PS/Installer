@@ -3,6 +3,7 @@
 #include "afxdialogex.h"
 #include "ProgressPage.h"
 #include "BaseDialog.h"
+#include "ProgramInstallStatus.h"
 
 IMPLEMENT_DYNAMIC(CProgressPage, CBaseDialog)
 
@@ -19,6 +20,7 @@ CProgressPage::~CProgressPage()
 void CProgressPage::DoDataExchange(CDataExchange* pDX)
 {
 	CBaseDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_PROGRESS_PAGE_BAR, m_progressBar);
 }
 
 
@@ -34,7 +36,7 @@ void CProgressPage::OnClose()
 void CProgressPage::PostNcDestroy()
 {
 	CBaseDialog::PostNcDestroy();
-	this;
+	delete this;
 }
 
 BOOL CProgressPage::OnInitDialog()
@@ -47,6 +49,52 @@ BOOL CProgressPage::OnInitDialog()
 
 	SetTextForControl(IDC_PROGRESS_PAGE_STATIC_TEXT_TITLE, IDS_PROGRESS_PAGE_TITLE, &m_titleFont);
 	SetTextForControl(IDC_PROGRESS_PAGE_STATIC_TEXT_BODY, IDS_PROGRESS_PAGE_BODY, &m_bodyFont);
+	UpdateStatus(false);
+
+	m_progressBar.Setup();
+
+	AfxBeginThread(CInstallerApp::StartDeploy,&m_progressBar);
 
 	return TRUE;
+}
+
+void CProgressPage::UpdateStatus(const int nIDS_OFFER_PROGRAM_NAME, const ProgramInstallStatus& installStatus)
+{
+	int nIDS_PROGRESS_PAGE_STATUS;
+
+	switch (installStatus)
+	{
+		case ProgramInstallStatus::StartedDownload : 
+		{
+			nIDS_PROGRESS_PAGE_STATUS = IDS_PROGRESS_PAGE_STATUS_DOWNLOAD;
+			break;
+		}
+		case ProgramInstallStatus::StartedInstall :
+		{
+			nIDS_PROGRESS_PAGE_STATUS = IDS_PROGRESS_PAGE_STATUS_INSTALL;
+			break;
+		}
+		default:
+		{
+			return;
+		}
+	}
+
+	CString staticStatus;
+	staticStatus.LoadString(nIDS_PROGRESS_PAGE_STATUS);
+
+	CString programName;
+	programName.LoadString(nIDS_OFFER_PROGRAM_NAME);
+
+	SetTextForControl(IDC_PROGRESS_PAGE_STATIC_TEXT_STATUS, staticStatus + programName, &m_bodyFont);
+}
+
+void CProgressPage::UpdateStatus(bool doesDeployCompleted)
+{
+	SetTextForControl
+	(
+		IDC_PROGRESS_PAGE_STATIC_TEXT_STATUS, 
+		doesDeployCompleted ? IDS_PROGRESS_PAGE_STATUS_END : IDS_PROGRESS_PAGE_STATUS_START, 
+		&m_bodyFont
+	);
 }

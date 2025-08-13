@@ -56,7 +56,7 @@ void CBaseDialog::InitBodyFont()
 		0,
 		0,
 		0,
-		FW_DONTCARE, // толщина
+		FW_NORMAL, // толщина
 		FALSE, // курсив
 		FALSE, // подчеркнутый
 		FALSE, // зачеркнутый
@@ -81,28 +81,37 @@ void CBaseDialog::SetPictureForControl(const int nIDS_filePathToPicture, CPictur
 
 void CBaseDialog::SetTextForControl(const int nIDC_staticText, const int nIDS_text, CFont* const font)
 {
+	CString text;
+	if (text.LoadString(nIDS_text) != NULL)
+	{
+		SetTextForControl(nIDC_staticText, text, font);
+	}
+}
+
+void CBaseDialog::SetTextForControl(const int nIDC_staticText, const CString& text, CFont* const font)
+{
 	auto textControl = GetDlgItem(nIDC_staticText);
 
 	textControl->SetFont(font);
 
-	CString text;
-	if (text.LoadString(nIDS_text) != NULL)
-	{
-		textControl->SetWindowText(text);
-	}
+	textControl->SetWindowText(text);
 }
 
 void CBaseDialog::SetDialogHead(const int nIDI_applicationIcon, const int nIDS_headText)
+{
+	CString headText;
+	if (headText.LoadString(nIDS_headText) != NULL)
+	{
+		SetDialogHead(nIDI_applicationIcon, headText);
+	}
+}
+
+void CBaseDialog::SetDialogHead(const int nIDI_applicationIcon, const CString& headText)
 {
 	// Иконка
 	auto icon = theApp.LoadIcon(nIDI_applicationIcon);
 	SetIcon(icon, TRUE);
 	SetIcon(icon, FALSE);
 
-	// Заголовок
-	CString windowText;
-	if (windowText.LoadString(nIDS_headText) != NULL)
-	{
-		SetWindowText(windowText);
-	}
+	SetWindowText(headText);
 }

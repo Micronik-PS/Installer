@@ -10,16 +10,7 @@ class COfferPage : public CBaseDialog
 
 public:
 	
-	COfferPage
-	(
-		ProgramInstallStatus& offerApp,
-		const int nIDS_OFFER_PAGE_HEAD, 
-		const int nIDS_OFFER_PAGE_TITLE, 
-		const int nIDS_PATH_LOGO, 
-		const int nIDS_OFFER_PAGE_DESCRIPTION, 
-		const int nIDS_OFFER_PAGE_LICENSE_URL,
-		CWnd* pParent = nullptr
-	);
+	COfferPage(OfferProgram& offerProgram, CWnd* pParent = nullptr);
 
 	virtual ~COfferPage();
 
@@ -37,15 +28,13 @@ public:
 	virtual BOOL OnInitDialog();
 
 private:
-	ProgramInstallStatus& m_offerApp;
+	OfferProgram& m_offerProgram;
 	CPictureCtrl m_offerLogo;
 	CMFCLinkCtrl m_licenseUrl;
 
-	const int m_nIDS_OFFER_PAGE_HEAD;
-	const int m_nIDS_OFFER_PAGE_TITLE;
-	const int m_nIDS_PATH_LOGO;
-	const int m_nIDS_OFFER_PAGE_DESCRIPTION;
-	const int m_nIDS_OFFER_PAGE_LICENSE_URL;
+	CString GetHeadText(int nIDS_OFFER_PROGRAM_NAME);
+	CString GetTitleText(int nIDS_OFFER_PROGRAM_NAME);
+
 public:
 	afx_msg void OnBnClickedOfferPageButtonAccept();
 	afx_msg void OnBnClickedOfferPageButtonCancel();
